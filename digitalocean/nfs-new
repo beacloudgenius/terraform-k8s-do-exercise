@@ -1,0 +1,25 @@
+kubectl apply -f existingPV.yaml
+
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-readwritemany-rwx-persistent-volumes-with-nfs-on-digitalocean-kubernetes
+
+helm install nfs-server \
+  stable/nfs-server-provisioner \
+  --set persistence.enabled=true \
+  --set persistence.storageClass=do-block-storage \
+  --set persistence.size=200Gi \
+  --set storageClass.defaultClass=true \
+  --set storageClass.reclaimPolicy=Retain
+
+# https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/
+
+# kubectl patch storageclass nfs              -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+kubectl patch storageclass do-block-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+
+kubectl get storageclass
+
+
+# data migration https://www.digitalocean.com/community/questions/reuse-volume-as-pvc
+
+# use existing volume https://github.com/digitalocean/csi-digitalocean/tree/master/examples/kubernetes/pod-single-existing-volume
+
+# doctl compute volume list

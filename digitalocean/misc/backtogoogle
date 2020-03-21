@@ -1,0 +1,2 @@
+mv ~/.kube/config ~/.kube/doconfig
+gcloud container clusters get-credentials andromeda

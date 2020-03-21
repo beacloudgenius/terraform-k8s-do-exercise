@@ -1,0 +1,2 @@
+mv ~/.kube/config ~/.kube/gcpconfig
+mv ~/.kube/doconfig ~/.kube/config

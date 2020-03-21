@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tutumwp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: tutumwp
+  template:
+    metadata:
+      labels:
+        role: tutumwp
+    spec:
+      containers:
+        - image: tutum/wordpress
+          imagePullPolicy: IfNotPresent
+          name: tutumwp

@@ -1,0 +1,4 @@
+terraform destroy -auto-approve
+doctl kubernetes cluster kubeconfig save  andromeda
+terraform destroy -auto-approve
+rm -rf terraform.tfstate*
