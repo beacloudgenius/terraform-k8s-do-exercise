@@ -1,12 +1,12 @@
 resource "helm_release" "cm" {
   name      = "cm"
   chart     = "jetstack/cert-manager"
-  version   = "v0.14.0"
+  version   = "v0.11.0"
   namespace = "cert-manager"
 
   provisioner "local-exec" {
-    #command = "kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml"
-    command = "kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.0/cert-manager.yaml"
+    command = "kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml"
+    #command = "kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.0/cert-manager.yaml"
   }
 
   set {

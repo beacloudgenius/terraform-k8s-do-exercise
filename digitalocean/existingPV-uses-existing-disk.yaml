@@ -27,7 +27,7 @@ spec:
   csi:
     driver: dobs.csi.digitalocean.com
     fsType: ext4
-    volumeHandle: fe2fdc91-68aa-11ea-a5ff-0a58ac142136
+    volumeHandle: 9c1b3e9b-6ba9-11ea-a52c-0a58ac142199
     # get id via doctl compute volume list
     volumeAttributes:
       com.digitalocean.csi/noformat: "true"

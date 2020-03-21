@@ -1,1 +1,0 @@
-Write detail here.

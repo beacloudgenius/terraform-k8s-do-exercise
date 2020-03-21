@@ -2,7 +2,7 @@ data "template_file" "cluster-issuer" {
   template = "${file("templates/cluster-issuer.yaml.tpl")}"
 
   vars = {
-    EMAIL = "nilesh@cloudgeni.us"
+    EMAIL = var.cloudflare_email
   }
 }
 
@@ -20,7 +20,7 @@ resource "null_resource" "cluster-issuer" {
       while true
       do
       if [ "$(kubectl get apiservice v1beta1.webhook.cert-manager.io -o jsonpath='{.status.conditions[?(@.type=="Available")].status}')"  = 'True' ] ; then
-            sleep 30 && break
+            sleep 60 && break
         else
             echo "Waiting for v1beta1.webhook.cert-manager.io ..." && sleep 1
         fi
